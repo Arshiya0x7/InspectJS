@@ -1,182 +1,138 @@
 
-![InspectJS ](./InspectJS.jpeg)
+<div align="center">
 
-# 🔍 inspectJS
 
-**Advanced JavaScript File Discovery and Analysis Tool**
+<h1>🔍 inspectJS</h1>
+<h3>Advanced JavaScript File Discovery and Analysis Tool</h3>
 
 ![Python](https://img.shields.io/badge/Python-3.6+-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 ![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows%20%7C%20macOS-lightgrey.svg)
+![Theme](https://img.shields.io/badge/Theme-Dark--Terminal-black.svg)
 
-`inspectJS` is a powerful security tool designed to automatically discover and analyze JavaScript files in web applications. It scans for sensitive information, API endpoints, and potential security vulnerabilities exposed in client-side JavaScript code.
+<img src="InspectJS.jpeg" alt="inspectJS Logo" width="420"/>
 
-## ✨ Features
+</div>
 
-- **🔍 Automated JS Discovery** - Automatically finds JavaScript files from websites
-- **🔐 Sensitive Data Detection** - Identifies API keys, tokens, passwords, and secrets
-- **🌐 Endpoint Analysis** - Discovers API endpoints and HTTP requests
-- **🎯 Critical Risk Assessment** - Color-coded risk evaluation (HIGH/MEDIUM/LOW)
-- **⚡ Multi-threaded Scanning** - Fast parallel analysis of multiple files
-- **📊 Comprehensive Reporting** - Detailed reports with source file attribution
-- **🔒 SSL Support** - Configurable SSL verification for testing environments
+---
 
-## 🚀 Installation
+## 🧠 Overview
 
-### Prerequisites
-- Python 3.6 or higher
-- pip package manager
+`inspectJS` is a **security auditing tool** designed to automatically discover and analyze JavaScript files in web applications.  
+It extracts **endpoints**, **API keys**, **tokens**, and potential **client-side vulnerabilities**.
 
-### Quick Install
+---
+
+## ⚙️ Installation
+
 ```bash
-# Clone the repository
 git clone https://github.com/mitsec/inspectjs.git
 cd inspectjs
-
-# Install dependencies
 pip install -r requirements.txt
-
-# Run the tool
 python inspectjs.py -u https://example.com
+```
 
+---
 
-📖 Usage
+## 🖥️ Terminal Preview
 
-python inspectjs.py -u https://target-website.com
+```
+┌─────────────────────────────────────────────────────────────┐
+│                 INSPECTJS SECURITY SCANNER                  │
+│─────────────────────────────────────────────────────────────│
+│ Target: https://example.com                                 │
+│ Threads: 10         SSL: Disabled         Depth: 2          │
+├─────────────────────────────────────────────────────────────┤
+│ [+] Discovered: 8 JS files                                  │
+│ [+] Detected API Keys: 3                                   │
+│ [+] Endpoints Found: 5                                     │
+│ [+] Risk Level: HIGH ⚠️                                     │
+└─────────────────────────────────────────────────────────────┘
+```
 
-Advanced Options
+---
 
-# Save results to file
+## 🧩 Detection Capabilities
+
+```
+[CRITICAL] 🔑 API Keys, Secrets, JWT Tokens
+[HIGH] 🌐 API Endpoints, Login Routes, Admin Panels
+[MEDIUM] 📧 Email Addresses, IPs, Subdomains
+[LOW] 🧱 Comments, Debug Statements, Paths
+```
+
+---
+
+## 🛠️ Command Examples
+
+```bash
+# Save report
 python inspectjs.py -u https://target.com -o report.txt
 
-# Use multiple threads for faster scanning
+# Multi-threaded scan
 python inspectjs.py -u https://target.com -t 10
 
-# Enable SSL verification
+# Verify SSL
 python inspectjs.py -u https://target.com --verify-ssl
 
-# Set discovery depth
-python inspectjs.py -u https://target.com -d 2
+# Set depth
+python inspectjs.py -u https://target.com -d 3
+```
 
-Command Line Arguments
+---
 
+## 📊 Sample Output
 
+```
+═══════════════════════════════════════════════════════════
+🔗 Target: https://example.com
+📅 Date: 2024-01-15 14:30:22
+📁 JS Files: 8
 
-Argument	Description	Default
--u, --url	Target website URL (required)	-
--o, --output	Save results to file	-
--t, --threads	Number of concurrent threads	5
--d, --depth	Discovery depth level	1
---verify-ssl	Enable SSL certificate verification	False
+[CRITICAL] API Key found → "api_key_123456789"
+  ↳ Source: https://example.com/app.js
+  ↳ Context: const API_KEY = "api_key_123456789";
 
-🎯 What It Detects
-🔴 Critical Secrets
-API Keys - Various API key patterns and secrets
+[ALERT] Endpoint → POST /api/v1/login
+  ↳ Parameters: username, password
 
-JWT Tokens - JSON Web Tokens in code
+═══════════════════════════════════════════════════════════
+📈 Findings Summary
+───────────────────────────────────────────────────────────
+  Critical Secrets ......... 3
+  HTTP Requests ............ 5
+  High-Risk Endpoints ...... 2
+  Overall Risk ............. 🔴 HIGH
+═══════════════════════════════════════════════════════════
+```
 
-Passwords - Hardcoded passwords and credentials
+---
 
-AWS Keys - AWS access and secret keys
+## 🧰 Use Cases
 
-Database URLs - Connection strings for databases
+- 🛡️ **Penetration Testing** – Identify exposed client-side secrets  
+- 🪲 **Bug Bounty Hunting** – Automate discovery of key leaks  
+- 🧮 **Code Review** – Check for unsafe hardcoded values  
+- 🧰 **CI/CD Integration** – Pre-deployment security validation  
 
-🌐 API & Endpoints
-REST API Endpoints - /api/, /v1/, /graphql etc.
+---
 
-HTTP Requests - Fetch, Axios, XHR, jQuery calls
+## ⚠️ Legal Disclaimer
 
-Authentication Endpoints - Login, register, auth routes
+> **inspectJS** must only be used for **authorized testing** and **educational purposes**.  
+> Unauthorized scanning or exploitation of systems without permission is **illegal**.
 
-Admin Interfaces - Admin panels and management endpoints
+---
 
-📧 Other Information
-Email Addresses - Found in JavaScript code
+## 👨‍💻 Author
 
-IP Addresses - Hardcoded IP addresses
+**mitsec**  
+- 🐦 Twitter: [@ynsmroztas](https://x.com/ynsmroztas)  
+- 💻 GitHub: [github.com/ynsmroztas](https://github.com/ynsmroztas)  
+- 🌐 Project: [inspectJS](https://github.com/mitsec/inspectjs)
 
-Custom Endpoints - Application-specific API routes
+---
 
-📊 Sample Output
-
-
-inspectJS powered by mitsec
-    (x.com/ynsmroztas)
-
-[*] Target Site: https://example.com
-[*] Threads: 5
-[*] SSL Verification: Disabled
-
-──────────────────────────────────────────────────
-[*] Discovering JS files...
-[+] 8 JS files discovered
-[*] Analyzing JS files...
-[>] Downloading: https://example.com/app.js
-[+] Analyzing: https://example.com/app.js (15,230 chars)
-
-══════════════════════════════════════════════════
-                  COMPREHENSIVE ANALYSIS REPORT
-══════════════════════════════════════════════════
-🔗 Target Site: https://example.com
-📅 Scan Date: 2024-01-15 14:30:22
-📁 Discovered JS Files: 8
-──────────────────────────────────────────────────
-
-🔴 CRITICAL API_KEYS FOUND (3):
-   1. api_key_123456789
-      📎 Source: https://example.com/app.js
-      📝 Context: ...const API_KEY = "api_key_123456789";...
-
-🚨 CRITICAL ENDPOINT REQUESTS (2):
-   1. POST /api/v1/login
-      📎 Source: https://example.com/app.js
-      🔍 Type: login
-      📋 Query Parameters: username, password
-
-══════════════════════════════════════════════════
-                    SCAN SUMMARY
-══════════════════════════════════════════════════
-   📁 Discovered JS Files: 8
-   🔴 Critical Secrets: 3
-   🌐 HTTP Requests: 5
-   🚨 Critical Endpoints: 2
-   📊 Total Findings: 15
-   ⚡ SECURITY RISK: HIGH
-══════════════════════════════════════════════════
-🛡️ Use Cases
-
-
-Security Audits
-Penetration Testing - Identify exposed secrets in client-side code
-
-Bug Bounty Hunting - Find sensitive information disclosure
-
-Security Assessments - Evaluate web application security posture
-
-Development
-Code Review - Automatically detect hardcoded secrets
-
-CI/CD Integration - Scan during development pipelines
-
-Compliance Checks - Ensure no sensitive data in frontend code
-
-⚠️ Legal & Ethical Use
-Important: This tool is designed for:
-
-Security research and education
-
-Authorized penetration testing
-
-Bug bounty programs with permission
-
-Security assessments of your own applications
-
-Never use this tool against websites without explicit permission. Unauthorized testing may violate laws and terms of service.
-
-👨‍💻 Author
-mitsec
-
-Twitter: @ynsmroztas
-
-GitHub: github.com/ynsmroztas
-
+<div align="center">
+  <sub>© 2025 mitsec — Licensed under the <a href="LICENSE">MIT License</a></sub>
+</div>

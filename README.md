@@ -1,5 +1,5 @@
 
-![InspectJS ](https://github.com/ynsmroztas/InspectJS/InspectJS.jpeg)
+![InspectJS ](./InspectJS.jpeg)
 
 # 🔍 inspectJS
 
@@ -179,3 +179,4 @@ mitsec
 Twitter: @ynsmroztas
 
 GitHub: github.com/ynsmroztas
+
